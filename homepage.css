@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat;
+  min-height: 100vh;
+}
+
+.main_header {
+  height: 140px;
+}
+
+.header_upper {
+  height: 40%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header_lower {
+  height: 60%;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  background: pink;
+  height: 100%;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-right: 20px;
+}
+
+nav ul li {
+  width: 100%;
+  height: 100%;
+  margin: 0 5px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 18px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  padding: 7px 10px;
+}
+nav span {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 13%;
+}
+
+nav p {
+  display: inline-block;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+nav p:after {
+  display: block;
+  content: '';
+  border-bottom: solid 3px #F79327;
+  transform: scaleX(0);
+  transition: transform 400ms ease-in-out;
+}
+
+nav p.fromLeft:hover:after {
+  transform: scaleX(1.0);
+}
+nav p:hover:after {
+  transform: scaleX(1.0);
+}
+nav p.fromLeft:after{
+  transform-origin: 0% 50%;
+}
+
+.sign {
+  display: block;
+  padding: 10px 20px;
+  font-size: 15px;  
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: #FF9494;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 7px #999;
+  align-items: center;
+  margin-bottom: 10px !important;
+
+}
+.sign:hover {
+  background-color: #F75b26;
+}
+
+.sign:active {
+  background-color: #565959;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+.first_section {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.first_section_top {
+  width: 100%;
+  height: 75vh;
+  text-align: left;
+  font-size: 40px;
+  color: #565959;
+  padding: 20px;
+  background-image: url('img/crazy_doughnuts.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+.first_section_below {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  font-size: 50px;
+  color: #565959;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px !important; /* Adjust the margin value as needed */
+}
+
+
+
+.button {
+  display: inline-block;
+  padding: 20px 30px;
+  font-size: 25px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: #FF9494;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 9px #999;
+  align-items: center;
+  margin-top: 30px !important;
+}
+
+.button:hover {
+  background-color: #F75b26;
+}
+
+.button:active {
+  background-color: #565959;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.galleries {
+  background-color: #f9e5eb;
+  padding: 20px;
+  text-align: center;
+  color: #565959;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  width: 100%;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+  transform: scale(1.05) rotate(3deg); /* Increase the scale and add a slight rotation on hover */
+  filter: brightness(90%) saturate(120%); /* Adjust brightness and saturation on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase the shadow on hover */
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer p {
+  margin-bottom: 10px;
+}
+
+.footer a {
+  margin: 5px;
+}

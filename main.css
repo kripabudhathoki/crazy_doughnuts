@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+body{
+    /* min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+    background:rgb(255, 182, 188);
+    padding: 30px;
+}
+
+.container{
+    margin-right: 0%;
+    margin-left: 200px;;
+    margin-top: 5%;
+    height: 560px;
+    width: 1005px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 15px 15px 5px rgba(201,159,0.6,0.6);
+    /* 15px 15px 5px rgba(201, 159, 54,0.6); */
+    /* border-radius:20px;
+    position:relative;
+    width: 100%;
+    height:100%;
+    background:white;
+    padding:40px 30px;
+    box-shadow: 0 5px 10px rgbs(0,0,0,0.2); */
+
+}
+
+.logodiv{
+    width:230px;
+    height:100px;
+    display:inline-block;
+    
+    }
+    
+    .logo
+    {
+        object-fit:contain;
+    object-position: middle;
+        height:100px;
+        width:220px;
+        border-radius:20px 0px 0px 0px;
+        margin-top: 0px;
+        /* border-style: solid;; */
+    }
+    .title{
+        /* border-style:solid ; */
+        display:inline-block; 
+        height: 50px;
+        width: 300px;
+        /* margin-left: 500px; */
+        vertical-align: top;
+        margin-left:140px;
+        margin-top:20px;
+        }
+    .description{
+        
+        display:inline-block;
+        /* border-style:solid; 
+        border-width:0.1px; */
+        height: 50px;
+        width: 500px;
+
+    }
+    .form-container {
+
+        /* border-style:solid ; */
+        width:93%;
+        height: 350px; /* Adjust the max-width as per your preference */
+        /* background-color: #fff; */
+        /* border-radius: 20px; */
+        padding: 40px 170px;
+        margin:0 auto;
+    }
+    /* .fieldset {
+        border: none;
+        padding: 2rem 0;
+        border-bottom: 3px dotted #ebd1c7;
+        max-width: 400px;
+        min-width: 300px;
+        margin: auto;
+      } */
+        
+      input, label {
+        display:block;
+    }
+    .eventitle
+        {
+            display:inline-block;
+            width:250px;
+            height:38px;
+            border-radius:6px;
+            padding-left:8px ;
+            background-color: rgbeb(248, 241, 241);
+            border-style: none;
+            border-color: rgb(164, 164, 164);
+        }
+    textarea{
+        display:inline-block;
+        /* width:250px;
+        height:38px; */
+        border-radius:6px;
+        padding-left:8px ;
+        background-color: rgb(248, 241, 241);
+        border-style: none;
+        border-color: rgb(164, 164, 164);
+    }
