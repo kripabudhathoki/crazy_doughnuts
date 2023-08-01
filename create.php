@@ -66,20 +66,20 @@
         </div>
 
         <div class="flavor">
-            <form id="doughnutForm" action="./addtocart.php" method="POST">
+            <form id="doughnutForm" action="process_order.php" method="POST">
                 <label for="flavor">Select Doughnut Flavor:</label>
                 <select id="flavor" name="flavor">
-            <option value="">-- Select Flavor --</option>
-            <option value="Strawberry">Strawberry</option>
-            <option value="Blueberry">Blueberry</option>
-            <option value="Custard">Custard</option>
-            <option value="Vanilla">Vanilla</option>
-            <option value="Dark Chocolate">Dark Chocolate</option>
-            <option value="White Chocolate">White Chocolate</option>
-            <option value="Chocolate Truffle">Chocolate Truffle</option>
-            <option value="Pineapple">Pineapple</option>
-            <option value="Mango">Mango</option>
-            <option value="Green Mint">Green Mint</option>
+                <option value="">-- Select Flavor --</option>
+                <option value="Strawberry">Strawberry</option>
+                <option value="Blueberry">Blueberry</option>
+                <option value="Custard">Custard</option>
+                <option value="Vanilla">Vanilla</option>
+                <option value="Dark Chocolate">Dark Chocolate</option>
+                <option value="White Chocolate">White Chocolate</option>
+                <option value="Chocolate Truffle">Chocolate Truffle</option>
+                <option value="Pineapple">Pineapple</option>
+                <option value="Mango">Mango</option>
+                <option value="Green Mint">Green Mint</option>
         </select>                
 
                 <br>
@@ -120,12 +120,10 @@
             <br>
 
             <div>
-                <?php
-                if (isset($_SESSION['username'])) {
-                    echo '<button type="submit" value="Add To Cart" name="Add_To_cart">Add to cart</button>';
-                } else {
-                    echo '<a href="./login.php">Please login</a>';
-                }
+            <button type="submit" value="makedoughnuts" name="makedoughnuts">Make Doughnuts</button>
+            <?php 
+            if(isset($_SESSION['username'])){
+                echo'<buton onclick="makedoughnuts">Your Doughnut have been created!!</button>';}
                 ?>
                 <?php 
                 $sql = "SELECT DISTINCT ingredients, unit_price FROM products";

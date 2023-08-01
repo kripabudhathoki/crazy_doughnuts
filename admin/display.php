@@ -1,17 +1,14 @@
 <?php
-session_start();
-include '../dbconnection.php';
+ include '../dbconnection.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
+    <title>Admin Dashboard</title>
+    <style>
 .custom-btn {
   background-color: #007bff;
   border: none;
@@ -70,51 +67,55 @@ include '../dbconnection.php';
   border-color: #bd2130;
 }
 
+
     </style>
+</head>
 <body>
-    
-<h1 > AdminDashboard </h1>
+    <h1 > AdminDashboard </h1>
     <div class =" container  my-5">
         <div   >
             <button class =" btn btn-primary custom-btn"><a href="display.php" >Manage user</button>
             <button class =" btn btn-primary custom-btn"><a href="manageorder.php" >Manage Order</button>
             <button class =" btn btn-primary custom-btn"><a href="logout.php" >Logout</button>
 </body>
-                        <table class="table">
+<table class="table">
             <thead>
                 <tr>
-                <th scope="col">order_id</th>
                 <th scope="col">user_id</th>
-                <th scope="col">order_date</th>
-                <th scope="col">flavors</th>
-                <th scope="col">ingredients</th>
-                <th scope="col">notes</th>
-                <th scope="col">price</th>
-                <th scope="col">Delete</th>
-                <th scope="col">Status</th>
+                <th scope="col">first_name</th>
+                <th scope="col">last_name</th>
+                <th scope="col">username</th>
+                <th scope="col">password</th>
+                <th scope="col">role_id</th>
+                <th scope="col">contact_number</th>
+                <th scope="col">address</th>
+                <th scope="col">operation</th>
                 </tr>
             </thead>
-            <tbody>
-            <?php
-  $sql = "SELECT * FROM `orders`";
+           
+<tbody>
+  <?php
+  $sql = "SELECT * FROM `user`";
   $result = mysqli_query($conn, $sql);
 
   if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
-      // Get the order_id from the row data
-      $order_id = $row['order_id'];
+      // Get the user_id from the row data
+      $user_id = $row['user_id'];
+  
       echo "<tr>";
-      echo "<td>" . $row['order_id'] . "</td>";
       echo "<td>" . $row['user_id'] . "</td>";
-      echo "<td>" . $row['order_date'] . "</td>";
-      echo "<td>" . $row['flavors'] . "</td>";
-      echo "<td>" . $row['ingredients'] . "</td>";
-      echo "<td>" . $row['notes'] . "</td>";
-      echo "<td>" . $row['price'] . "</td>";
+      echo "<td>" . $row['first_name'] . "</td>";
+      echo "<td>" . $row['last_name'] . "</td>";
+      echo "<td>" . $row['username'] . "</td>";
+      echo "<td>" . $row['password'] . "</td>";
+      echo "<td>" . $row['role_id'] . "</td>";
+      echo "<td>" . $row['contact_number'] . "</td>";
+      echo "<td>" . $row['address'] . "</td>";
       echo "<td>";
       // Use the $user_id variable in the link
-     
-      echo '<button class="btn btn-danger"><a href="deleteorder.php?deleteid=' . $order_id . '">Delete</a></button>';
+      echo '<button class =" btn btn-primary custom-btn""><a href="update.php?updateid=' . $user_id . '">Update</a></button>';
+      echo '<button class="btn btn-danger"><a href="delete.php?deleteid=' . $user_id . '">Delete</a></button>';
       echo "</td>";
       echo "</tr>";
     }
@@ -122,6 +123,14 @@ include '../dbconnection.php';
     echo "Error: " . mysqli_error($conn);
   }
   ?>
- </tbody>
+ 
+</tbody>
+            </table>
+        </div>
+         
+        
+   </div>
 </body>
+
 </html>
+

@@ -44,7 +44,7 @@ if (!$loggedin) {
       <span><li><a href="#CrazyLogo" class="fromLeft"><p style="font-family:Courgette;color: #F85B28;">Crazy Doughnuts</p></a></li></span>
       <span><li><a href="delivery.php"><p class="fromLeft" style="color: #565959">Delivery</p></a></li></span>
       <span><li><a href="store.php"><p class="fromLeft" style="color: #565959">About Us</p></a></li></span>
-      <span><li><a href='mycart.php' class='sign' style='display: block; margin-top: 0px;'>Cart</a></li></span>
+      <span><li><a href='mycart.php'  class='sign' style='display: block; margin-top: 0px;'>My Order</a></li></span>
     </ul>
   </nav>
 </div>

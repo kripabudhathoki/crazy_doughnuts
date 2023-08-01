@@ -73,12 +73,11 @@ include '../dbconnection.php';
     </style>
 <body>
     
-<h1 > AdminDashboard </h1>
+<h1 > Chief Dashboard </h1>
     <div class =" container  my-5">
         <div   >
-            <button class =" btn btn-primary custom-btn"><a href="display.php" >Manage user</button>
-            <button class =" btn btn-primary custom-btn"><a href="manageorder.php" >Manage Order</button>
-            <button class =" btn btn-primary custom-btn"><a href="logout.php" >Logout</button>
+            <button class =" btn btn-primary custom-btn"><a href="vieworder.php" >View Order</button>
+            <button class =" btn btn-primary custom-btn"><a href="chieflogout.php" >Logout</button>
 </body>
                         <table class="table">
             <thead>
@@ -90,7 +89,6 @@ include '../dbconnection.php';
                 <th scope="col">ingredients</th>
                 <th scope="col">notes</th>
                 <th scope="col">price</th>
-                <th scope="col">Delete</th>
                 <th scope="col">Status</th>
                 </tr>
             </thead>
@@ -103,6 +101,7 @@ include '../dbconnection.php';
     while ($row = mysqli_fetch_assoc($result)) {
       // Get the order_id from the row data
       $order_id = $row['order_id'];
+  
       echo "<tr>";
       echo "<td>" . $row['order_id'] . "</td>";
       echo "<td>" . $row['user_id'] . "</td>";
@@ -111,17 +110,15 @@ include '../dbconnection.php';
       echo "<td>" . $row['ingredients'] . "</td>";
       echo "<td>" . $row['notes'] . "</td>";
       echo "<td>" . $row['price'] . "</td>";
-      echo "<td>";
-      // Use the $user_id variable in the link
-     
-      echo '<button class="btn btn-danger"><a href="deleteorder.php?deleteid=' . $order_id . '">Delete</a></button>';
       echo "</td>";
       echo "</tr>";
     }
   } else {
     echo "Error: " . mysqli_error($conn);
   }
+  
   ?>
- </tbody>
+            </tbody>
+            
 </body>
 </html>

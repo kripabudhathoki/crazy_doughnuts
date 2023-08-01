@@ -6,14 +6,14 @@ extract($_POST);
 if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $result = mysqli_query($conn, "SELECT * FROM `admin` WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT * FROM `chief` WHERE username = '$username'");
     $row = mysqli_num_rows($result);
     if ($row) {
         session_start();
         $_SESSION['username'] = $username;
-        echo "<script>alert('Login Successful');window.location.href='./admindashboard.php';</script>";
+        echo "<script>alert('Login Successful');window.location.href='./chiefdashboard.php';</script>";
     } else {
-        echo "<script>alert('Please check your username or password');window.location.href='./login.php';</script>";
+        echo "<script>alert('Please check your username or password');window.location.href='./chieflogin.php';</script>";
     }
 }
 
@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
   <title>Login</title>
 </head>
 <body>
-  <h2>Admin Login</h2>
+  <h2>Chief Login</h2>
   <form class="" action="" method="post" autocomplete="off">
     <label for="username">Username : </label>
     <input type="text" name="username" id="username" required value=""> <br>
