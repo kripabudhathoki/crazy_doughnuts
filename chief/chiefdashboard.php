@@ -9,8 +9,8 @@ include '../dbconnection.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chief Dashboard</title>
     <style>    
-.custom-btn {
-  background-color: #007bff;
+.chief {
+  background-color: pink;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -18,21 +18,16 @@ include '../dbconnection.php';
   font-size: 16px;
   cursor: pointer;
 }  
-.btn {
+.chief {
   display: inline-block;
   font-weight: 400;
   text-align: center;
-  white-space: nowrap;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  padding: 10px 8px;
+  font-size: 25px;
   line-height: 1.5;
-  border-radius: 0.25rem;
+  border-radius: 5px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
     </style>
@@ -41,7 +36,7 @@ include '../dbconnection.php';
     <h1 > Chief Dashboard </h1>
     <div class =" container  my-5">
         <div>
-            <button class =" btn btn-primary custom-btn"><a href="vieworder.php" >View Order</button>
-            <button class =" btn btn-primary custom-btn"><a href="chieflogout.php" >Logout</button>
+            <button class ="chief"><a href="vieworder.php" >View Order</button>
+            <button class ="chief"><a href="chieflogout.php" >Logout</button>
 </body>
 </html>

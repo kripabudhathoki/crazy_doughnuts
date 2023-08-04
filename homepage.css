@@ -31,7 +31,7 @@ body {
 nav {
   display: flex;
   justify-content: center;
-  background: pink;
+  background-color: #FCAEAE;
   height: 100%;
   width: 100%;
 }

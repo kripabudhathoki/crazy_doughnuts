@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'dbconnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -15,17 +16,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $row = $result->fetch_assoc();
             $price = $row["unit_price"];
 
-            $user_id = 1;
+            $user_id = $_SESSION['user_id'];
             $order_date = date('Y-m-d');
 
             $sql = "INSERT INTO orders (user_id, order_date, flavors, ingredients, notes, price)
                     VALUES ('$user_id', '$order_date', '$flavor', '$ingredient', '$notes', '$price')";
-            if ($conn->query($sql) === TRUE) {
-                header("Location: create.php");
-                exit;
-            } else {
-                echo "Error inserting order: " . $conn->error;
-            }
+          if ($conn->query($sql) === TRUE) {
+            $_SESSION["orderPlaced"] = "Your Order has been placed successfully!";
+            header("Location: create.php");
+            
+            exit;
+        } else {
+            $_SESSION["orderPlaced"] = "Cannot place order".$conn->error;
+            header("Location: create.php");
+
+
+        }
+        
+        
         } else {
             echo "Invalid ingredient selected.";
         }

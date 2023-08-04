@@ -13,7 +13,7 @@ include '../dbconnection.php';
 </head>
 <style>
 .custom-btn {
-  background-color: #007bff;
+  background-color: pink;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -76,9 +76,9 @@ include '../dbconnection.php';
 <h1 > AdminDashboard </h1>
     <div class =" container  my-5">
         <div   >
-            <button class =" btn btn-primary custom-btn"><a href="display.php" >Manage user</button>
-            <button class =" btn btn-primary custom-btn"><a href="manageorder.php" >Manage Order</button>
-            <button class =" btn btn-primary custom-btn"><a href="logout.php" >Logout</button>
+        <a href="display.php" > <button class =" btn btn-primary custom-btn">Manage user</button></a>
+        <a href="manageorder.php" >   <button class =" btn btn-primary custom-btn">Manage Order</button></a>
+        <a href="logout.php" >   <button class =" btn btn-primary custom-btn">Logout</button></a>
 </body>
                         <table class="table">
             <thead>
@@ -112,11 +112,20 @@ include '../dbconnection.php';
       echo "<td>" . $row['notes'] . "</td>";
       echo "<td>" . $row['price'] . "</td>";
       echo "<td>";
-      // Use the $user_id variable in the link
      
       echo '<button class="btn btn-danger"><a href="deleteorder.php?deleteid=' . $order_id . '">Delete</a></button>';
-      echo "</td>";
-      echo "</tr>";
+      ?>
+      <td>
+    <select name="status" id="status">
+      <option value="<?php echo $row['status']?>"><?php echo $row['status']?>Pending</option>
+      <option value="cancelled">Cancelled</option>
+      <option value="delivered">Delivered</option>
+
+
+    </select>
+    </td>
+    </tr>
+<?php
     }
   } else {
     echo "Error: " . mysqli_error($conn);

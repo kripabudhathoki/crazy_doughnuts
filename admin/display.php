@@ -10,7 +10,7 @@
     <title>Admin Dashboard</title>
     <style>
 .custom-btn {
-  background-color: #007bff;
+  background-color: pink;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -74,9 +74,9 @@
     <h1 > AdminDashboard </h1>
     <div class =" container  my-5">
         <div   >
-            <button class =" btn btn-primary custom-btn"><a href="display.php" >Manage user</button>
-            <button class =" btn btn-primary custom-btn"><a href="manageorder.php" >Manage Order</button>
-            <button class =" btn btn-primary custom-btn"><a href="logout.php" >Logout</button>
+        <a href="display.php" ><button class =" btn btn-primary custom-btn">Manage user</button></a>
+        <a href="manageorder.php"><button class =" btn btn-primary custom-btn">Manage Order</button></a>
+        <a href="logout.php"><button class =" btn btn-primary custom-btn">Logout</button></a>
 </body>
 <table class="table">
             <thead>

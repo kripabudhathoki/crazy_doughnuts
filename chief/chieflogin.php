@@ -1,22 +1,34 @@
 <?php
-include '../dbconnection.php';
 
-extract($_POST);
+require '../dbconnection.php';
+
 
 if (isset($_POST["submit"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $result = mysqli_query($conn, "SELECT * FROM `chief` WHERE username = '$username'");
-    $row = mysqli_num_rows($result);
-    if ($row) {
-        session_start();
-        $_SESSION['username'] = $username;
-        echo "<script>alert('Login Successful');window.location.href='./chiefdashboard.php';</script>";
-    } else {
-        echo "<script>alert('Please check your username or password');window.location.href='./chieflogin.php';</script>";
-    }
-}
+  $username = $_POST["username"];
+  $password = $_POST["password"];
 
+  
+  $result = mysqli_query($conn, "SELECT * FROM `chief` WHERE username = '$username'");
+
+  if (!$result) {
+   
+    echo "Error: " . mysqli_error($conn);
+    exit; 
+  }
+
+  $row = mysqli_fetch_assoc($result);
+
+  if (mysqli_num_rows($result) > 0) {
+    if (md5($password) == $row['password']) {
+      header("Location: chiefdashboard.php");
+      exit; 
+    } else {
+      echo "<script>alert('Wrong Password');</script>";
+    }
+  } else {
+    echo "<script>alert('User Not Registered');</script>";
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +36,12 @@ if (isset($_POST["submit"])) {
 <head>
   <meta charset="utf-8">
   <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="../login.css"/>
 </head>
 <body>
-  <h2>Chief Login</h2>
-  <form class="" action="" method="post" autocomplete="off">
+  <div class="form-container">
+  <h2 style="color:#565959">Chief Login</h2>
+  <form class="" action="" method="POST" autocomplete="off">
     <label for="username">Username : </label>
     <input type="text" name="username" id="username" required value=""> <br>
     <label for="password">Password : </label>
@@ -35,6 +49,7 @@ if (isset($_POST["submit"])) {
     <button type="submit" name="submit">Login</button>
   </form>
   <br>
-  <a href="registration.php">Registration</a>
+  <a href="chiefregistration.php">Registration</a>
+</div>
 </body>
 </html>

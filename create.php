@@ -1,91 +1,134 @@
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Create Doughnut</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-        .image{
-            background-image:url("img/create.jpg");
-            height:500px;
+
+        .image {
+            background-image: url("img/create.jpg");
+            height: 500px;
             width: 100%;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center center;
-            justify-content: center;  
+            justify-content: center;
         }
-        .maincreate{
+
+        .maincreate {
             width: 100%;
-            display:flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             height: 100px;
             font-family: Courgette;
             color: #565959;
-            
+
         }
-        .flavor{
+
+        .flavor {
             justify-content: center;
             display: flex;
             font-family: Montserrat;
             margin-bottom: 20px;
 
         }
-        .flavor label{
+
+        .flavor label {
             margin-bottom: 0px;
             padding: 5px;
-            
+
         }
-        .price{
+
+        .price {
             width: 100%;
-            display:flex;
+            display: flex;
             justify-content: center;
             font-family: Montserrat;
-            
+
         }
-        .notes{
+
+        .notes {
             width: 100%;
-            display:flex;
+            display: flex;
             justify-content: center;
             font-family: Montserrat;
         }
-        #ingredientscontainter{
+
+        #ingredientscontainter {
             top: 10%;
 
         }
-        </style>
+        .make {
+            display: block;
+            padding: 18px 20px;
+            font-size: 22px;  
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: white;
+            background-color: #FF9494;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 7px #999;
+            margin-bottom: 5px !important;
+
+        }
+        .make:hover {
+            background-color: #F75b26;
+        }
+
+        .make:active {
+        background-color: #565959;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+        }
+    </style>
 </head>
 
 <body>
-<?php
+    <?php
     include("headernav.php");
     ?>
     <div class="image">
         <div class="maincreate">
             <h1>Create Your Own Doughnut!</h1>
         </div>
+        <div style='text-align:center; color:#565959; background-color:#FCAEAE; margin-bottom:10px';>
+            <?php
+                if(isset($_SESSION['orderPlaced'])){
+                echo $_SESSION['orderPlaced'];
+                $_SESSION['orderPlaced'] = "";
 
-        <div class="flavor">
-            <form id="doughnutForm" action="process_order.php" method="POST">
+
+                }
+            ?>
+        </div>
+        <div class="flavor" style='color:#565959'>
+            <form id="doughnutForm" action="./process_order.php" method="POST">
                 <label for="flavor">Select Doughnut Flavor:</label>
                 <select id="flavor" name="flavor">
-                <option value="">-- Select Flavor --</option>
-                <option value="Strawberry">Strawberry</option>
-                <option value="Blueberry">Blueberry</option>
-                <option value="Custard">Custard</option>
-                <option value="Vanilla">Vanilla</option>
-                <option value="Dark Chocolate">Dark Chocolate</option>
-                <option value="White Chocolate">White Chocolate</option>
-                <option value="Chocolate Truffle">Chocolate Truffle</option>
-                <option value="Pineapple">Pineapple</option>
-                <option value="Mango">Mango</option>
-                <option value="Green Mint">Green Mint</option>
-        </select>                
+                    <option value="" style='color:#565959'>-- Select Flavor --</option>
+                    <option value="Strawberry" style='color:#565959'>Strawberry</option>
+                    <option value="Blueberry" style='color:#565959'>Blueberry</option>
+                    <option value="Custard" style='color:#565959'>Custard</option>
+                    <option value="Vanilla" style='color:#565959'>Vanilla</option>
+                    <option value="Dark Chocolate" style='color:#565959'>Dark Chocolate</option>
+                    <option value="White Chocolate" style='color:#565959'>White Chocolate</option>
+                    <option value="Chocolate Truffle" style='color:#565959'>Chocolate Truffle</option>
+                    <option value="Pineapple" style='color:#565959'>Pineapple</option>
+                    <option value="Mango" style='color:#565959'>Mango</option>
+                    <option value="Green Mint" style='color:#565959'>Green Mint</option>
+                </select>
 
                 <br>
                 <br>
 
-                <label>Select Ingredients:</label>
+                <label style='color:#565959'>Select Ingredients:</label>
                 <div id="ingredientsContainer">
                     <?php
                     include './dbconnection.php';
@@ -99,7 +142,6 @@
                             $price = $row["unit_price"];
                             echo '<br><input type="radio" id="' . $ingredient . '" name="ingredients" value="' . $ingredient . '" data-price="' . $price . '">';
                             echo '<label for="' . $ingredient . '">' . $ingredient . '</label><br>';
-                            // Move the hidden input fields inside the while loop
                         }
                     }
 
@@ -109,35 +151,27 @@
 
         <div class="price">
             <span id="priceDisplay"></span>
+          
         </div>
+        
 
         <br>
 
         <div class="notes">
-            <label for="notes">Additional Notes:</label><br>
+            <label for="notes" style='color:#565959'>Additional Notes:</label><br>
             <textarea id="notes" name="notes" rows="2" cols="50" placeholder="Enter any additional notes here..."></textarea>
 
             <br>
 
             <div>
-            <button type="submit" value="makedoughnuts" name="makedoughnuts">Make Doughnuts</button>
-            <?php 
-            if(isset($_SESSION['username'])){
-                echo'<buton onclick="makedoughnuts">Your Doughnut have been created!!</button>';}
+                <?php
+                if ((isset($_SESSION['username']))||(isset($_SESSION['user_id']))) {
+                    echo '<button class ="make" type="submit" value="" name="button";>Make Doughnuts</button>';
+                } else {
+                    echo '<a href="./login.php">Please login</a>';
+                }
                 ?>
-                <?php 
-                $sql = "SELECT DISTINCT ingredients, unit_price FROM products";
-                    $result = $conn->query($sql);
 
-                    if ($result->num_rows > 0) {
-                        while ($prod = $result->fetch_assoc()) {
-                            $ingredient = $prod["ingredients"];
-                            $price = $prod["unit_price"];
-
-                  echo'<input type="hidden" name="Item_name" id="Item_name" value="'. $ingredient .'">
-                  <input type="hidden" name="price" id="price" value="'. $price .'">';
-                        }
-                    }?>
             </div>
         </div>
 
@@ -145,7 +179,10 @@
     </div>
     <script>
         const priceDisplay = document.getElementById('priceDisplay');
+      
         const radioButtons = document.querySelectorAll('input[name="ingredients"]');
+       
+        
 
         radioButtons.forEach(radioButton => {
             radioButton.addEventListener('change', () => {
@@ -155,10 +192,12 @@
                 }
             });
         });
+
+        
     </script>
+    <?php
+include("footernav.php");
+?>
 </body>
 </html>
 
-<?php
-    include("footernav.php");
-?>

@@ -7,32 +7,28 @@ include '../dbconnection.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdminDashboard</title>
+    <title>Admin Dashboard</title>
     <style>    
-.custom-btn {
-  background-color: #007bff;
-  color: #fff;
+.admin {
+  background-color: pink;
+  color: #565959;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
 }  
-.btn {
+.admin {
   display: inline-block;
   font-weight: 400;
   text-align: center;
-  white-space: nowrap;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  padding: 10px 8px;
+  font-size: 25px;
   line-height: 1.5;
-  border-radius: 0.25rem;
+  border-radius: 5px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
     </style>
@@ -41,8 +37,8 @@ include '../dbconnection.php';
     <h1 > AdminDashboard </h1>
     <div class =" container  my-5">
         <div   >
-            <button class =" btn btn-primary custom-btn"><a href="display.php" >Manage user</button>
-            <button class =" btn btn-primary custom-btn"><a href="manageorder.php" >Manage Order</button>
-            <button class =" btn btn-primary custom-btn"><a href="logout.php" >Logout</button>
+            <button class ="admin"><a href="display.php" >Manage user</button></a>
+            <button class ="admin"><a href="manageorder.php" >Manage Order</button></a>
+            <button class ="admin"><a href="logout.php" >Logout</button></a>
 </body>
 </html>

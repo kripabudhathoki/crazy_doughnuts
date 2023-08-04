@@ -12,8 +12,8 @@ include '../dbconnection.php';
     <title>Document</title>
 </head>
 <style>
-.custom-btn {
-  background-color: #007bff;
+.chief {
+  background-color: pink;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -42,33 +42,33 @@ include '../dbconnection.php';
       background-color: rgba(0, 0, 0, 0.05);
     }
    
-.btn {
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: 5px 5px;
-  font-size: 20px;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  
+    .chief {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 5px 5px;
+        font-size: 20px;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        
 
-}
+    }
 
-.btn-danger {
-  color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-.btn-danger:hover {
-  color: #fff;
-  background-color: #c82333;
-  border-color: #bd2130;
-}
+    .chief-danger {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .chief-danger:hover {
+        color: #fff;
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
 
     </style>
 <body>
@@ -76,8 +76,8 @@ include '../dbconnection.php';
 <h1 > Chief Dashboard </h1>
     <div class =" container  my-5">
         <div   >
-            <button class =" btn btn-primary custom-btn"><a href="vieworder.php" >View Order</button>
-            <button class =" btn btn-primary custom-btn"><a href="chieflogout.php" >Logout</button>
+            <button class =" chief"><a href="vieworder.php" >View Order</button></a>
+            <button class =" chief"><a href="chieflogout.php" >Logout</button></a>
 </body>
                         <table class="table">
             <thead>
@@ -85,10 +85,10 @@ include '../dbconnection.php';
                 <th scope="col">order_id</th>
                 <th scope="col">user_id</th>
                 <th scope="col">order_date</th>
-                <th scope="col">flavors</th>
-                <th scope="col">ingredients</th>
-                <th scope="col">notes</th>
-                <th scope="col">price</th>
+                <th scope="col">Flavors</th>
+                <th scope="col">Ingredients</th>
+                <th scope="col">Notes</th>
+                <th scope="col">Price</th>
                 <th scope="col">Status</th>
                 </tr>
             </thead>
@@ -110,8 +110,19 @@ include '../dbconnection.php';
       echo "<td>" . $row['ingredients'] . "</td>";
       echo "<td>" . $row['notes'] . "</td>";
       echo "<td>" . $row['price'] . "</td>";
-      echo "</td>";
-      echo "</tr>";
+
+      ?>
+      <td>
+      <select name="status" id="status">
+        <option value="<?php echo $row['status']?>"><?php echo $row['status']?>Pending</option>
+        <option value="cancelled">Cancelled</option>
+        <option value="delivered">Delivered</option>
+  
+  
+      </select>
+      </td>
+    </tr>
+    <?php
     }
   } else {
     echo "Error: " . mysqli_error($conn);
