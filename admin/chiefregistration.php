@@ -1,5 +1,5 @@
 <?php
-require 'dbconnection.php';
+require '../dbconnection.php';
 session_start(); // Add this line to start the session
 
 if (!empty($_SESSION["id"])) {
@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
       $hashed_password = password_hash($password, PASSWORD_DEFAULT);
       $password = md5($password);
       $query = "INSERT INTO user (`first_name`, `last_name`, `username`, `password`, `contact_number`, `address`, role_id)
-      VALUES(?, ?, ?, ?, ?, ?, 2)";
+      VALUES(?, ?, ?, ?, ?, ?, 3)";
 
 
       $stmt = mysqli_prepare($conn, $query);
@@ -41,7 +41,7 @@ if (isset($_POST["submit"])) {
 
       if (mysqli_stmt_execute($stmt)) {
         echo "<script>alert('Registration Successful');</script>";
-        header ("Location:homepage.php");
+        header ("Location:chiefdashboard.php");
       } else {
         echo "Error: " . mysqli_error($conn);
       }
@@ -146,7 +146,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <form action="registration.php" method="POST">
+    <form action="" method="POST">
   <div class="form-container">
     <div id="registration-form" padding:5px;>
       <h1>Registration</h1>
@@ -179,8 +179,8 @@ if (isset($_POST["submit"])) {
         <input type="text" id="address" name="address" required>
       </div>
       <button type="submit" name="submit">Register</button>
-      <p>Register as Chef? <a href="./admin/chiefregistration.php">Register</a></p>
-      <p>Already registered? <a href="login.php">Sign in</a></p>
+      <p>Register As Customer?<a href="../registration.php">Register</a></p>
+      <p>Already registered?<a href="../login.php">Sign-in</a></p>
     </div>
   </div>
 </form>

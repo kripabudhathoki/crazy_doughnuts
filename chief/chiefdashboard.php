@@ -33,10 +33,11 @@ include '../dbconnection.php';
     </style>
 </head>
 <body>
-    <h1 > Chief Dashboard </h1>
+    <h1 > Chef Dashboard </h1>
     <div class =" container  my-5">
         <div>
             <button class ="chief"><a href="vieworder.php" >View Order</button>
             <button class ="chief"><a href="chieflogout.php" >Logout</button>
+            
 </body>
 </html>

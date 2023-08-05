@@ -40,5 +40,6 @@ include '../dbconnection.php';
             <button class ="admin"><a href="display.php" >Manage user</button></a>
             <button class ="admin"><a href="manageorder.php" >Manage Order</button></a>
             <button class ="admin"><a href="logout.php" >Logout</button></a>
+            <button class ="admin"><a href="chiefregistration.php">Chef Registration</a>
 </body>
 </html>

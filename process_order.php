@@ -3,13 +3,13 @@ session_start();
 include 'dbconnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['flavor']) && isset($_POST['ingredients']) && isset($_POST['notes'])) {
+    if (isset($_POST['flavor']) && isset($_POST['product_name']) && isset($_POST['notes'])) {
         $flavor = $_POST['flavor'];
-        $ingredient = $_POST['ingredients'];
+        $ingredient = $_POST['product_name'];
         $notes = $_POST['notes'];
         
         
-        $sql = "SELECT unit_price FROM products WHERE ingredients = '$ingredient'";
+        $sql = "SELECT unit_price FROM products WHERE product_name = '$ingredient'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

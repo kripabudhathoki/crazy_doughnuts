@@ -133,14 +133,14 @@
                     <?php
                     include './dbconnection.php';
 
-                    $sql = "SELECT DISTINCT ingredients, unit_price FROM products";
+                    $sql = "SELECT DISTINCT product_name, unit_price FROM products";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            $ingredient = $row["ingredients"];
+                            $ingredient = $row["product_name"];
                             $price = $row["unit_price"];
-                            echo '<br><input type="radio" id="' . $ingredient . '" name="ingredients" value="' . $ingredient . '" data-price="' . $price . '">';
+                            echo '<br><input type="radio" id="' . $ingredient . '" name="product_name" value="' . $ingredient . '" data-price="' . $price . '">';
                             echo '<label for="' . $ingredient . '">' . $ingredient . '</label><br>';
                         }
                     }
@@ -180,7 +180,7 @@
     <script>
         const priceDisplay = document.getElementById('priceDisplay');
       
-        const radioButtons = document.querySelectorAll('input[name="ingredients"]');
+        const radioButtons = document.querySelectorAll('input[name="product_name"]');
        
         
 

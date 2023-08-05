@@ -2,39 +2,62 @@
 session_start(); // Initialize the session
 
 require 'dbconnection.php';
-if(!empty($_SESSION["user_id"])){
-  header("Location: homepage.php"); 
+if (!empty($_SESSION["user_id"])) {
+    header("Location: homepage.php");
 }
 
 if (isset($_POST["submit"])) {
-  $username = $_POST["username"];
-  $password = $_POST["password"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-  
-  $result = mysqli_query($conn, "SELECT * FROM `user` WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT * FROM `user` WHERE username = '$username'");
 
-  if (!$result) {
-   
-    echo "Error: " . mysqli_error($conn);
-    exit; 
-  }
-
-  $row = mysqli_fetch_assoc($result);
-
-  if (mysqli_num_rows($result) > 0) {
-    if (md5($password) == $row['password']) {
-      $_SESSION["user_id"] = $row["user_id"];
-    session_start();
-    $_SESSION['loggedin'] = TRUE;
-    $_SESSION['username'] = $username;
-      header("Location: homepage.php");
-      exit; 
-    } else {
-      echo "<script>alert('Wrong Password');</script>";
+    if (!$result) {
+        echo "Error: " . mysqli_error($conn);
+        exit;
     }
-  } else {
-    echo "<script>alert('User Not Registered');</script>";
-  }
+
+    $row = mysqli_fetch_assoc($result);
+
+    if (mysqli_num_rows($result) > 0) {
+        $role_id = $row['role_id'];
+
+        if ($role_id == '1') {
+            // Admin login
+            if (md5($password) == $row['password']) {
+                $_SESSION['username'] = $username;
+                $_SESSION['role_id'] = '1';
+                header('location: admin/admindashboard.php');
+                exit;
+            } else {
+                echo "<script>alert('Wrong Password');</script>";
+            }
+        } elseif ($role_id == '2') {
+            // User login
+            if (md5($password) == $row['password']) {
+                $_SESSION["user_id"] = $row["user_id"];
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['username'] = $username;
+                $_SESSION['role_id'] = '2';
+                header('location: homepage.php');
+                exit;
+            } else {
+                echo "<script>alert('Wrong Password');</script>";
+            }
+        } elseif ($role_id == '3') {
+            // Chef login
+            if (md5($password) == $row['password']) {
+                $_SESSION['username'] = $username;
+                $_SESSION['role_id'] = '3';
+                header('location: chief/chiefdashboard.php');
+                exit;
+            } else {
+                echo "<script>alert('Wrong Password');</script>";
+            }
+        }
+    } else {
+        echo "<script>alert('User Not Registered');</script>";
+    }
 }
 ?>
 
